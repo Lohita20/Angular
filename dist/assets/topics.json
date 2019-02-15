@@ -1,0 +1,17 @@
+[
+    {
+        "ID":"1",
+        "Name":"forms",
+        "Type":"UI"
+    },
+    {
+        "ID":"2",
+        "Name":"directives",
+        "Type":"UI"
+    },
+    {
+        "ID":"3",
+        "Name":"pipes",
+        "Type":"UI"
+    }
+]
