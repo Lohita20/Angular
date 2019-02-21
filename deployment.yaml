@@ -1,0 +1,35 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-angular-app-service 
+spec:
+  selector:
+    app: my-angular-app
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 4200
+      # Port to forward to inside the pod
+      targetPort: 4200
+      # Port accessible outside cluster
+      angularPort: 30002
+  type: LoadBalancer
+ 
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-angular-app-deployment 
+spec:
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: my-angular-app
+    spec:
+      containers:
+        - name: my-angular-app-container 
+          image: angular-kubernetes
+          ports:
+            - containerPort: 4200
